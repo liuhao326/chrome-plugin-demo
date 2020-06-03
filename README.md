@@ -1,70 +1,18 @@
-# 写在前面
-
-我花了将近一个多月的时间断断续续写下这篇博文，并精心写下完整demo，所以转载务必保留 http://blog.haoji.me/chrome-plugin-develop.html 。本文所有涉及到的大部分代码均在这个demo里面：https://github.com/sxei/chrome-plugin-demo ，大家可以直接下载下来运行。
-
-另外，本文图片较多，请耐心等待加载完毕。
-
-本文目录：
-
-![](http://image.liuxianan.com/201707/20170710_222547_735_9922.png)
-
-demo部分截图：
-
-![](http://image.liuxianan.com/201707/20170710_223150_516_6129.png)
-
-鉴于有很多网友有交流学习Chrome插件的诉求，所以最近建了一个QQ群，仅仅是为了提供一个互相交流学习的平台：
-
-![_W832xH370_](https://img.alicdn.com/tfs/TB1KGO.GUT1gK0jSZFrXXcNCXXa-1664-740.png)
-
-如果微信二维码过期，请扫描下面二维码加我微信备注“Chrome插件开发交流”拉你进群(不私聊)，否则不予通过。
-
-![](https://img.alicdn.com/tfs/TB1BM59GFY7gK0jSZKzXXaikpXa-250-292.png)
-
-## 仓库说明
+# 仓库说明
 
 * `full-chrome-plugin-demo`：大部分demo代码都在这个仓库；
 * `simple-chrome-plugin-demo`：最精简的Chrome仓库模板，当需要快速写一个简单仓库时可以基于这个模板；
 * `page-action-demo`：关于`page-action`部分的demo代码，由于这部分代码和`full-chrome-plugin-demo`冲突，所以单独拿出来；
 
-# 前言
-
-## 什么是Chrome插件
-
-严格来讲，我们正在说的东西应该叫Chrome扩展(`Chrome Extension`)，真正意义上的Chrome插件是更底层的浏览器功能扩展，可能需要对浏览器源码有一定掌握才有能力去开发。鉴于Chrome插件的叫法已经习惯，本文也全部采用这种叫法，但读者需深知本文所描述的Chrome插件实际上指的是Chrome扩展。
+# 什么是Chrome插件
 
 Chrome插件是一个用Web技术开发、用来增强浏览器功能的软件，它其实就是一个由HTML、CSS、JS、图片等资源组成的一个[.crx](https://developer.chrome.com/extensions/crx)后缀的压缩包.
-
-个人猜测`crx`可能是`Chrome Extension`如下3个字母的简写：
-
-![](http://image.liuxianan.com/201706/20170619_114836_364_3616.png)
 
 另外，其实不只是前端技术，Chrome插件还可以配合C++编写的dll动态链接库实现一些更底层的功能(NPAPI)，比如全屏幕截图。
 
 ![360抢票王插件dll截图](http://image.liuxianan.com/201706/20170626_112802_406_9027.png)
 
 > 由于安全原因，Chrome浏览器42以上版本已经陆续不再支持NPAPI插件，取而代之的是更安全的PPAPI。
-
-## 学习Chrome插件开发有什么意义
-
-增强浏览器功能，轻松实现属于自己的“定制版”浏览器，等等。
-
-Chrome插件提供了很多实用API供我们使用，包括但不限于：
-
-* 书签控制；
-* 下载控制；
-* 窗口控制；
-* 标签控制；
-* 网络请求控制，各类事件监听；
-* 自定义原生菜单；
-* 完善的通信机制；
-* 等等；
-
-## 为什么是Chrome插件而不是Firefox插件
-
-1. Chrome占有率更高，更多人用；
-2. 开发更简单；
-3. 应用场景更广泛，Firefox插件只能运行在Firefox上，而Chrome除了Chrome浏览器之外，还可以运行在所有webkit内核的国产浏览器，比如360极速浏览器、360安全浏览器、搜狗浏览器、QQ浏览器等等；
-4. 除此之外，Firefox浏览器也对Chrome插件的运行提供了一定的支持；
 
 # 开发与调试
 
@@ -86,7 +34,7 @@ Chrome插件没有严格的项目结构要求，只要保证本目录有一个`m
 
 下面给出的是一些常见的配置项，均有中文注释，完整的配置文档请戳[这里](https://developer.chrome.com/extensions/manifest)。
 
-```javascript
+```json
 {
 	// 清单文件的版本，这个必须写，而且必须是2
 	"manifest_version": 2,
@@ -1352,18 +1300,3 @@ $('#btn').on('click', function(){alert('测试')});
 * [manifest清单文件](https://developer.chrome.com/extensions/manifest)
 * [permissions权限](https://developer.chrome.com/extensions/permissions)
 * [chrome.xxx.api文档](https://developer.chrome.com/extensions/api_index)
-* [模糊匹配规则语法详解](https://developer.chrome.com/extensions/match_patterns)
-
-## 第三方资料
-
-部分中文资料，不是特别推荐：
-
-* [360安全浏览器开发文档](http://open.se.360.cn/open/extension_dev/overview.html)
-* [360极速浏览器Chrome扩展开发文档](http://open.chrome.360.cn/extension_dev/overview.html)
-* [Chrome扩展开发极客系列博客](http://www.cnblogs.com/champagne/p/)
-
-## 附图
-
-附图：Chrome高清png格式logo：
-
-![](http://image.liuxianan.com/201706/20170619_113331_710_1132.png)
